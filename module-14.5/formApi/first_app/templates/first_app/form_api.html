@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+    <title>Form API</title>
+{% endblock title %}
+
+{% block content %}
+<h1 class='text-center'>form api page</h1>
+    <form method="post" class='container'>
+        {% csrf_token %}
+        {{form | crispy}}
+    </form>
+
+{% endblock content %}

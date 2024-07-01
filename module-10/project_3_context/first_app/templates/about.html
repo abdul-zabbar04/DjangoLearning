@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>about page</h1>
+    <h4>name and dept: {{name}} {{age}}</h4>
+
+    <!-- conditional statement or filtering -->
+     {% if age >= 20 %}
+     <h4>you are eligible</h4>
+     {% elif age >= 10 and age < 20 %}
+     <h4>You are not eligible</h4>
+     {% else %}
+     <h4>You are child</h4>    
+     {% endif %}
+
+    <!-- loop -->
+     {% for i in courses %}
+     <h3>Id: {{i.id}}, Name: {{i.course}}, Fee: {{i.fee}}</h3>
+     {% endfor %}
+
+
+     <!-- join filter -->
+      {{dept}}
+      <h1>{{ dept | join:'+' }}</h1>
+
+      <!-- datetime filter -->
+       {{ today | date:'d M Y D' }}
+
+</body>
+</html>

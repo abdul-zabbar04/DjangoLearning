@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}<title>djangoForm</title>{% endblock title %}
+
+{% block content %}
+    <div class="mb-5 mt-5" style="width: 50%; margin: auto;" >
+        <form method='post' enctype= "multipart/form-data">
+            {% comment %} action="{% url 'aboutPage' %}" {% endcomment %}
+            {% csrf_token %}
+            {{form|crispy}}
+            {% comment %} {{form.as_p}}  {% endcomment %}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <h5>{{name}}</h5>
+    <h5>{{email}}</h5>
+    <h5>{{meals}}</h5>
+{% endblock content %}

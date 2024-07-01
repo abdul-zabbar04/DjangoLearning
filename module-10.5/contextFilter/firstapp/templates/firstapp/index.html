@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Django Templating Lanuage</h1>
+    <h3><a href="/">back</a></h3>
+    
+     <h3>Join filter >> {{ strList | join:"-" }}</h3>
+     <h3>Join filter >> {{ strList | join:"+" }}</h3>
+    
+     <h3>Date filter >> Today's Date: {{today | date:"D d-M-Y"}}</h3>
+
+     <h3>Default filter >> {{ email | default:"It's the default value" }}</h3>
+
+    <h3>add filter >> {{fee | add:"500"}}</h3>
+
+    <h3>capfirst >> {{name | capfirst}}</h3>
+
+    <h3>cut >> {{about | cut:" "}}</h3>
+
+    <h3>Dictsort >> {{members | dictsort:"name"}}</h3>
+
+    <h3>{{ 'This are from escape &amp, &quot, &gt, &lt' | escape }}</h3>
+
+    <h3>first >> {{ strList | first }}</h3>
+    <h3>last >> {{ strList | last }}</h3>
+    <h3>length >> {{ strList | length }}</h3>
+    <h3>linenumber >> {{ strList | linenumbers }}</h3>
+    <h3>lower >> {{ 'Humpty Dumpty sat on the Wall' | lower }}</h3>
+    <h3>upper >> {{ 'Humpty Dumpty sat on the Wall' | upper }}</h3>
+    <h3>title >> {{ 'Humpty Dumpty sat on the Wall' | title }}</h3>
+    <h3>random >> {{strList | random}}</h3>
+    <h3>Slice >> {{strList | slice:":2"}}</h3>
+    <h3>time >> {{today | time:"H\h:i\m" }}</h3>
+    <h3>timesince >> {{ today | timesince }}</h3>
+    <h3>truncatechars >> {{ about | truncatechars:6 }}</h3>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>Home</title>
+{% endblock title %}
+
+{% block content %}
+{% comment %} <h5><a href="{% url 'indexPage' %}">Go to index page</a></h5>
+<h5><a href="{% url 'homePage' %}">Go to home page</a></h5> {% endcomment %}
+
+<h1 class="m-5 p-5 text-center">This is Home page. Click index tab to go to index page</h1>
+{% endblock content %}

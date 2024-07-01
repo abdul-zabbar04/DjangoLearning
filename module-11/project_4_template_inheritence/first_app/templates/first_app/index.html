@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <h1>{{id}}</h1> <!--from about url-->
+    <h1>{{req}}</h1> <!--from contact url-->
+    <h1>{{req.zabbar}}</h1> <!--from contact url-->
+
+    <section>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">userId</th>
+                <th scope="col">id</th>
+                <th scope="col">title</th>
+                <th scope="col">body</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in data %}
+              <tr>
+                <th scope="row">{{i.userId}}</th>
+                <td>{{i.id}}</td>
+                <td>{{i.title}}</td>
+                <td>{{i.body}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </section>
+    <h1>I am in first_app</h1>
+    <img src="{% static 'images/image2.png'%}" alt="bird2">
+    {{block.super}}
+{% endblock %}
