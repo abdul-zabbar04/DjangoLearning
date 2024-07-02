@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+    <title>Model Form</title>
+{% endblock title %}
+
+{% block content %}
+<h1 class='text-center'>Model Form Page</h1>
+    <form method="post" class='container'>
+        {% csrf_token %}
+        {{form | crispy}}
+    </form>
+
+{% endblock content %}
