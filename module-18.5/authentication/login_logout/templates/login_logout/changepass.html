@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>Change password</title>
+{% endblock title %}
+
+{% block content %}
+    <h1 class="text-center">Change Password</h1>
+    <form method='post' class='container' novalidate>
+        {% csrf_token %}
+        <!--{{form | crispy}}-->
+        {% for fm in form %}
+            {{fm.label_tag}}
+            {{fm}}
+            <p>{{fm.errors}}</p>
+        {% endfor %}
+        <button class="btn btn-success">Update Password</button>
+    </form>
+{% endblock content %}
