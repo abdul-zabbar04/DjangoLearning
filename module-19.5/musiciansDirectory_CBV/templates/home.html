@@ -1,0 +1,62 @@
+{% extends "base.html" %} {% block title %}
+<title>Home</title>
+{% endblock title %} {% block content %}
+<div class="container">
+  <h1 class="text-center">This is home page</h1>
+  <table class="table table-bordered border-dark">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Musician Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Album Rating</th>
+        <th scope="col">Instrument Type</th>
+        <th scope="col">Album Name</th>
+        <th scope="col">Release Date</th>
+        {% if user.is_authenticated %}
+        <th scope="col">Actions</th>
+        {% endif %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in data %}
+      <tr>
+        <td>{{item.id}}</td>
+        {% if user.is_authenticated %}
+        <td>
+          <a
+            href="{% url 'editMusician' item.musician.id %}"
+            style="text-decoration: none; color: black"
+            >{{item.musician}}</a
+          >
+        </td>
+        {% else %}
+        <td>
+            {{item.musician}}
+        </td>
+        {% endif %}
+        <td>{{item.musician.email}}</td>
+        <td>{{item.rating}}</td>
+        <td>{{item.musician.instrument_type}}</td>
+        <td>{{item.album_name}}</td>
+        <td>{{item.album_release_date}}</td>
+        {% if user.is_authenticated %}
+        <td>
+          <a
+            href="{% url 'editAlbum' item.id %}"
+            class="btn btn-warning m-2 btn-sm"
+            >Edit</a
+          >
+          <a
+            href="{% url 'deleteAlbum' item.id %}"
+            class="btn btn-danger m-2 btn-sm"
+            >Delete</a
+          >
+        </td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock content %}
