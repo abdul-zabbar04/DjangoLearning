@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+    <title>{{type}}</title>
+{% endblock title %}
+
+{% block content %}
+    <h1 class= 'text-center'>{{type}}</h1>
+    <form method='post' class= 'container' novalidate>
+        {% csrf_token %}
+        <!-- {{form | crispy}} -->
+        {% for fm in form %}
+            {{fm.label_tag}}
+            {{fm}}
+            <p>{{fm.errors | striptags}}</p>
+        {% endfor %}
+        <button class="btn btn-success mt-2">{{type}}</button>
+    </form>
+{% endblock content %}

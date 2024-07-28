@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    <title>Home</title>
+{% endblock title %}
+{% block content %}
+    <div class="row justity-content-center container-fluid">
+        <div class="description col-lg-5 col-md-11 col-sm-11 p-5">
+            <h3>Skip the Showroom, Shop Online: Cars at Your Fingertips</h3>
+            <p style="box-shadow: 4px 4px 8px gray" class="p-3 mt-4">
+                Ditch the dealership! Online car buying platforms let you browse cars from home, filter by features and budget, and skip haggling. See clear pricing, access history reports, and explore financing options – all online. Take a test drive at your convenience or with delivery. Do your research and choose a reputable platform, but online car buying is the future – buckle up for a smoother ride!
+            </p>
+        </div>
+        <div class="hero-car col-lg-5 col-md-11 col-sm-11 p-5">
+            <img src="{% static 'home.webp' %}" width="100%" alt=""/>
+        </div>
+    </div>
+   
+{% endblock content %}
+
+{% block con_2 %}
+<ul class="d-flex justify-content-evenly flex-wrap mb-5">
+    <li style="list-style-type: None; ">
+        <a href="{% url 'homePage' %}" style="text-decoration: None;" class="btn btn-secondary btn-sm m-1">All Brands</a>
+    </li>
+    {% for brand in brands %}
+    <li style="list-style-type: None; ">
+        <a href="{% url 'brandWise' brand.slug %}" style="text-decoration: None;" class="btn btn-secondary btn-sm m-1">{{brand}}</a>
+    </li>
+    {% endfor %}
+</ul>
+<h5 class='mx-5 mb-3'>Total {{total}} results Found </h5>
+<div class="d-flex flex-wrap gap-5 justify-content-center text-center">
+    {% for car in data %}
+    <div style="box-shadow: 4px 4px 8px gray" class= 'p-3'>
+        <img src="{{car.image.url}}" alt="" width= "250px" height='250px'>
+        <h6 class='mt-2'>{{car.title| truncatewords:4}}</h6>
+        <h6><div class="btn btn-success mt-1 btn-sm disabled">Price: {{car.price}} BDT</div></h6>
+        <h6>
+            <div class="btn btn-warning mt-1 btn-sm disabled">Brand: {{car.brand_name}}
+        </h6>
+        <a href="{% url 'carDetailsPage' car.id %}" class="btn btn-primary btn-sm"> View Details</a>
+    </div>
+{% endfor %}
+</div>
+{% endblock con_2 %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Profile</title>
+{% endblock title %}
+
+{% block content %}
+
+<div class="w-50 p-5 mx-auto" style='box-shadow: 4px 4px 8px gray'>
+    <h6>User Name: {{user.username}}</h6>
+    <h6>First Name: {{user.first_name}}</h6>
+    <h6>Last Name: {{user.last_name}}</h6>
+    <h6>Email: {{user.email}}</h6>
+    <a href="{% url 'editProfilePage' %}" class="btn btn-success my-2">Edit Profile Info</a>
+    <a href="{% url 'passChangePage' %}" class="btn btn-primary mx-3">Change Your Password</a>
+</div>
+{% endblock content %}
+
+{% block con_2 %}
+<h5 class='mx-5 mb-3 mt-4'>Sold cars found {{data | length}} </h5>
+<div class="d-flex flex-wrap gap-5 justify-content-center text-center">
+    {% for car in data %}
+    <div style="box-shadow: 4px 4px 8px gray" class= 'p-3'>
+        <img src="{{car.image.url}}" alt="" width= "250px" height='250px'>
+        <h6 class='mt-2'>{{car.title| truncatewords:4}}</h6>
+        <h6><div class="btn btn-success mt-1 btn-sm disabled">Price: {{car.price}} BDT</div></h6>
+        <h6>
+            <div class="btn btn-warning mt-1 btn-sm disabled">Brand: {{car.brand_name}}
+        </h6>
+        <a href="{% url 'carDetailsPage' car.id %}" class="btn btn-primary btn-sm"> View Details</a>
+    </div>
+{% endfor %}
+</div>
+{% endblock con_2 %}

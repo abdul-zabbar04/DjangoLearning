@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}{% endblock title %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
+<body style="background: #babdcc;">
+    <header>
+        <nav class="navbar navbar-expand-lg bg-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand text-white"><i>Car Hub</i></a>
+              <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'homePage' %}">Home</a>
+                  </li>
+                </ul>
+                <div class="d-flex">
+                  {% if user.is_authenticated %}
+                  <a href="{% url 'profilePage' %}" class="btn btn-success m-2 btn-sm" type="submit">Profile</a>
+                  <a href="{% url 'logoutPage' %}" class="btn btn-success m-2 btn-sm" type="submit">Logout</a>
+                  {% else %}
+                  <a href="{% url 'loginPage' %}" class="btn btn-success m-2 btn-sm" type="submit">Login</a>
+                  <a href="{% url 'signupPage' %}" class="btn btn-success m-2 btn-sm" type="submit">Signup</a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </nav>
+    </header>
+    {% if messages %}
+      {% for m in messages %}
+      <h3>{{m}}</h3>
+      {% endfor %}
+    {% endif %}
+
+    {% block content %}{% endblock content %}
+    {% block con_2 %}{% endblock con_2 %}
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
